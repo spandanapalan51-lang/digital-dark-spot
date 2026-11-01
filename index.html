@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital Dark Spot - AI-Assisted Information Gap Detection Platform">
+    <title>Digital Dark Spot | Research Intelligence</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">◈</div>
+            <div>
+                <h2>Digital Dark Spot</h2>
+                <p class="tagline">RESEARCH INTELLIGENCE</p>
+            </div>
+        </div>
+
+        <div class="nav-label">WORKSPACE</div>
+
+        <nav>
+            <button type="button" class="nav-btn active" onclick="showPage('dashboard')">
+                <span>▦</span> Dashboard
+            </button>
+
+            <button type="button" class="nav-btn" onclick="showPage('sources')">
+                <span>▤</span> Source Library
+            </button>
+
+            <button type="button" class="nav-btn" onclick="showPage('analysis')">
+                <span>⌕</span> Gap Analysis
+            </button>
+
+            <button type="button" class="nav-btn" onclick="showPage('checklist')">
+                <span>✓</span> Verification List
+            </button>
+        </nav>
+
+        <div class="sidebar-category">
+            <p class="nav-label">RESEARCH DOMAINS</p>
+
+            <button type="button" class="domain-link" onclick="setDomain('Scholarship')">🎓 Scholarship</button>
+            <button type="button" class="domain-link" onclick="setDomain('Education')">📚 Education</button>
+            <button type="button" class="domain-link" onclick="setDomain('Business')">💼 Business</button>
+        </div>
+
+        <div class="sidebar-bottom">
+            <span class="status-dot"></span>
+            <span>System Online</span>
+            <small>Frontend Prototype</small>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div>
+                <p class="breadcrumb">
+                    Workspace / <b id="pageName">Dashboard</b>
+                </p>
+                <p class="welcome-text">Welcome to your research workspace</p>
+            </div>
+
+            <div class="header-right">
+                <span class="status">
+                    <span class="status-dot"></span>
+                    Saved in browser
+                </span>
+                <div class="profile">DS</div>
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page active">
+
+            <div class="hero">
+
+                <div class="hero-content">
+
+                    <p class="eyebrow">✦ AI-ASSISTED RESEARCH INTELLIGENCE</p>
+
+                    <h1>
+                        See what the search
+                        <span>doesn't show you.</span>
+                    </h1>
+
+                    <p>
+                        Discover potential information gaps, identify
+                        conflicting claims and find outdated sources
+                        before making important decisions.
+                    </p>
+
+                    <div class="hero-tags">
+                        <span>◈ Information Gaps</span>
+                        <span>↔ Source Comparison</span>
+                        <span>✓ Verification</span>
+                    </div>
+
+                </div>
+
+                <div class="hero-visual">
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+                    <div class="orbit orbit-three"></div>
+                    <div class="scanner-icon">⌕</div>
+                    <div class="floating-dot dot-one"></div>
+                    <div class="floating-dot dot-two"></div>
+                    <div class="floating-dot dot-three"></div>
+                </div>
+
+                <div class="hero-decoration"></div>
+
+            </div>
+
+
+            <!-- RESEARCH INPUT -->
+            <div class="card research-card">
+
+                <div class="section-top">
+                    <div>
+                        <p class="section-label">START EXPLORING</p>
+                        <h2>What are you researching?</h2>
+                    </div>
+                    <span class="step-badge">STEP 01</span>
+                </div>
+
+                <form id="topicForm">
+
+                    <input
+                        type="text"
+                        id="topic"
+                        placeholder="Enter your research question..."
+                        required
+                    >
+
+                    <button type="submit">Start Research →</button>
+
+                </form>
+
+                <p class="input-hint">
+                    Choose a research domain to get started.
+                </p>
+
+                <div class="examples">
+
+                    <button type="button"
+                        onclick="setDomain('Scholarship'); setTopic('What should I verify before applying for a scholarship?')">
+                        🎓 Scholarship
+                    </button>
+
+                    <button type="button"
+                        onclick="setDomain('Education'); setTopic('What should I verify before choosing a college?')">
+                        📚 Education
+                    </button>
+
+                    <button type="button"
+                        onclick="setDomain('Business'); setTopic('How can I verify a business before working with it?')">
+                        💼 Business
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">YOUR ACTIVITY</p>
+                    <h2>Research Overview</h2>
+                </div>
+                <span class="live-tag">● LIVE WORKSPACE</span>
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <div class="stat-top">
+                        <span>Sources Added</span>
+                        <span class="stat-icon cyan">▤</span>
+                    </div>
+                    <h2 id="totalSources">0</h2>
+                    <p class="stat-description">Collected research sources</p>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-top">
+                        <span>Potential Gaps</span>
+                        <span class="stat-icon purple">⌕</span>
+                    </div>
+                    <h2 id="totalGaps">0</h2>
+                    <p class="stat-description">Areas requiring investigation</p>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-top">
+                        <span>Possible Conflicts</span>
+                        <span class="stat-icon orange">⇄</span>
+                    </div>
+                    <h2 id="totalConflicts">0</h2>
+                    <p class="stat-description">Details requiring comparison</p>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-top">
+                        <span>Sources to Review</span>
+                        <span class="stat-icon green">◷</span>
+                    </div>
+                    <h2 id="totalOutdated">0</h2>
+                    <p class="stat-description">Old or undated sources</p>
+                </div>
+
+            </div>
+
+
+            <!-- CURRENT RESEARCH -->
+            <div class="card current-research">
+
+                <div class="section-top">
+                    <div>
+                        <p class="section-label">ACTIVE PROJECT</p>
+                        <h2>Current Research</h2>
+                    </div>
+                    <span class="active-indicator">● Active</span>
+                </div>
+
+                <p id="currentTopic">No research topic selected yet.</p>
+
+            </div>
+
+
+            <!-- RESEARCH DOMAINS -->
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">EXPLORE YOUR DOMAINS</p>
+                    <h2>Choose Your Research Area</h2>
+                </div>
+            </div>
+
+            <div class="domain-grid">
+
+                <div class="domain-card scholarship-card">
+
+                    <div class="domain-card-top">
+                        <div class="domain-icon">🎓</div>
+                        <span>DOMAIN 01</span>
+                    </div>
+
+                    <h3>Scholarship Research</h3>
+
+                    <p>
+                        Investigate scholarship eligibility,
+                        application deadlines, required documents,
+                        renewal conditions and official procedures.
+                    </p>
+
+                    <div class="domain-tags">
+                        <span>Eligibility</span>
+                        <span>Deadlines</span>
+                        <span>Documents</span>
+                    </div>
+
+                    <button type="button"
+                        onclick="setDomain('Scholarship'); setTopic('What should I verify before applying for a scholarship?')">
+                        Explore Scholarship →
+                    </button>
+
+                </div>
+
+
+                <div class="domain-card education-card">
+
+                    <div class="domain-card-top">
+                        <div class="domain-icon">📚</div>
+                        <span>DOMAIN 02</span>
+                    </div>
+
+                    <h3>Education Research</h3>
+
+                    <p>
+                        Explore colleges, courses, admission criteria,
+                        fee structures, accreditation and placement
+                        information.
+                    </p>
+
+                    <div class="domain-tags">
+                        <span>Admissions</span>
+                        <span>Courses</span>
+                        <span>Fees</span>
+                    </div>
+
+                    <button type="button"
+                        onclick="setDomain('Education'); setTopic('What should I verify before choosing a college?')">
+                        Explore Education →
+                    </button>
+
+                </div>
+
+
+                <div class="domain-card business-card">
+
+                    <div class="domain-card-top">
+                        <div class="domain-icon">💼</div>
+                        <span>DOMAIN 03</span>
+                    </div>
+
+                    <h3>Business Research</h3>
+
+                    <p>
+                        Examine company credibility, business claims,
+                        services, policies and opportunities using
+                        reliable information.
+                    </p>
+
+                    <div class="domain-tags">
+                        <span>Credibility</span>
+                        <span>Company</span>
+                        <span>Services</span>
+                    </div>
+
+                    <button type="button"
+                        onclick="setDomain('Business'); setTopic('How can I verify a business before working with it?')">
+                        Explore Business →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- WORKFLOW -->
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">OUR PROCESS</p>
+                    <h2>Research Intelligence Pipeline</h2>
+                </div>
+            </div>
+
+            <div class="pipeline">
+
+                <div class="pipeline-step">
+                    <div class="pipeline-number">01</div>
+                    <h3>Collect</h3>
+                    <p>Add relevant sources and information.</p>
+                </div>
+
+                <div class="pipeline-arrow">→</div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-number">02</div>
+                    <h3>Analyze</h3>
+                    <p>Identify potential information gaps.</p>
+                </div>
+
+                <div class="pipeline-arrow">→</div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-number">03</div>
+                    <h3>Compare</h3>
+                    <p>Review conflicting source details.</p>
+                </div>
+
+                <div class="pipeline-arrow">→</div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-number">04</div>
+                    <h3>Verify</h3>
+                    <p>Prepare the next verification steps.</p>
+                </div>
+
+            </div>
+
+
+            <!-- FEATURES -->
+            <div class="feature-section">
+
+                <div class="feature-intro">
+
+                    <p class="section-label">BEYOND SEARCH RESULTS</p>
+
+                    <h2>
+                        Look deeper.<br>
+                        <span>Think smarter.</span>
+                    </h2>
+
+                    <p>
+                        Finding information is only the beginning.
+                        Understanding what is missing is what makes
+                        research meaningful.
+                    </p>
+
+                </div>
+
+                <div class="feature-list">
+
+                    <div class="feature-item">
+                        <span>⌕</span>
+                        <div>
+                            <h3>Information Gap Detection</h3>
+                            <p>Identify unanswered questions in reviewed sources.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span>⇄</span>
+                        <div>
+                            <h3>Conflict Identification</h3>
+                            <p>Compare details and flag possible inconsistencies.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span>◷</span>
+                        <div>
+                            <h3>Source Freshness</h3>
+                            <p>Review publication dates and outdated information.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span>✓</span>
+                        <div>
+                            <h3>Verification Support</h3>
+                            <p>Organize important questions to verify next.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRANSPARENCY -->
+            <div class="transparency-card">
+
+                <div class="transparency-icon">✦</div>
+
+                <div>
+                    <p class="section-label">TRUST & TRANSPARENCY</p>
+                    <h3>Evidence first. Assumptions labelled.</h3>
+
+                    <p>
+                        Findings are presented as potential signals.
+                        Always check the supporting source before
+                        relying on important information.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- BOTTOM BANNER -->
+            <div class="bottom-banner">
+
+                <div>
+                    <p class="section-label">DIGITAL DARK SPOT</p>
+
+                    <h2>
+                        Don't just find information.<br>
+                        Find what's missing.
+                    </h2>
+
+                    <p>Discover. Analyze. Compare. Verify.</p>
+                </div>
+
+                <div class="banner-symbol">◉</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOURCE LIBRARY -->
+        <section id="sources" class="page">
+
+            <div class="page-heading">
+                <p class="section-label">RESEARCH MANAGEMENT</p>
+                <h1>Source Library</h1>
+
+                <p class="subtitle">
+                    Collect and organize multiple sources for your research.
+                </p>
+            </div>
+
+            <div class="card">
+
+                <div class="section-top">
+                    <div>
+                        <p class="section-label">SOURCE COLLECTION</p>
+                        <h2>Add New Source</h2>
+                    </div>
+                    <span class="step-badge">SOURCE INPUT</span>
+                </div>
+
+                <form id="sourceForm">
+
+                    <label for="sourceTitle">Source Title</label>
+                    <input
+                        id="sourceTitle"
+                        type="text"
+                        required
+                        placeholder="Enter source title"
+                    >
+
+                    <label for="sourceUrl">Source URL</label>
+                    <input
+                        id="sourceUrl"
+                        type="url"
+                        placeholder="https://example.com"
+                    >
+
+                    <label for="sourceDate">Publication / Update Date</label>
+                    <input
+                        id="sourceDate"
+                        type="date"
+                    >
+
+                    <label for="sourceContent">Source Content</label>
+                    <textarea
+                        id="sourceContent"
+                        rows="6"
+                        required
+                        placeholder="Paste relevant source information here..."
+                    ></textarea>
+
+                    <button type="submit">+ Add Source</button>
+
+                </form>
+
+                <button class="secondary" type="button" onclick="loadExamples()">
+                    Try Example Topic
+                </button>
+
+                <button type="button" onclick="runAnalysis()">
+                    ✦ Analyze Collected Sources
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="section-top">
+                    <div>
+                        <p class="section-label">YOUR COLLECTION</p>
+                        <h2>Added Sources</h2>
+                    </div>
+                </div>
+
+                <div id="sourceList">
+                    No sources added.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GAP ANALYSIS -->
+        <section id="analysis" class="page">
+
+            <div class="page-heading">
+                <p class="section-label">INTELLIGENCE ENGINE</p>
+                <h1>Gap Analysis</h1>
+
+                <p class="subtitle">
+                    Identify unanswered questions and information
+                    that may require further investigation.
+                </p>
+            </div>
+
+            <div class="warning">
+                ⚠ These are rule-based suggestions, not proof that
+                information is missing from the internet. Review
+                supporting sources before drawing conclusions.
+            </div>
+
+
+            <!-- RESEARCH SUMMARY -->
+            <div class="card">
+
+                <p class="section-label">ACTIVE RESEARCH</p>
+                <h2>Research Summary</h2>
+
+                <p id="analysisTopic">
+                    Start a research topic first.
+                </p>
+
+                <div id="summaryResults">
+                    <p>Add sources and run analysis to generate a research summary.</p>
+                </div>
+
+            </div>
+
+
+            <!-- INFORMATION GAPS -->
+            <div class="card">
+
+                <p class="section-label">DETECTION RESULTS</p>
+                <h2>Potential Information Gaps</h2>
+
+                <div id="gapResults">
+                    No analysis available.
+                </div>
+
+            </div>
+
+
+            <!-- SOURCE FRESHNESS -->
+            <div class="card">
+
+                <p class="section-label">SOURCE MONITORING</p>
+                <h2>Source Freshness</h2>
+
+                <div id="freshResults">
+                    No sources available.
+                </div>
+
+            </div>
+
+
+            <!-- POSSIBLE CONTRADICTIONS -->
+            <div class="card">
+
+                <p class="section-label">COMPARATIVE ANALYSIS</p>
+                <h2>Possible Contradictions</h2>
+
+                <div id="conflictResults">
+                    No comparison available.
+                </div>
+
+            </div>
+
+
+            <!-- RECOMMENDATIONS -->
+            <div class="card">
+
+                <p class="section-label">NEXT STEPS</p>
+                <h2>Research Recommendations</h2>
+
+                <div id="recommendationResults">
+                    Run an analysis to generate recommendations.
+                </div>
+
+            </div>
+
+            <button type="button" onclick="runAnalysis()">
+                ✦ Run Analysis
+            </button>
+
+        </section>
+
+
+        <!-- VERIFICATION CHECKLIST -->
+        <section id="checklist" class="page">
+
+            <div class="page-heading">
+                <p class="section-label">NEXT RESEARCH STEPS</p>
+                <h1>Verification Center</h1>
+
+                <p class="subtitle">
+                    Organize important questions and identify
+                    what you should verify next.
+                </p>
+            </div>
+
+            <div class="card">
+
+                <p class="section-label">YOUR ACTION PLAN</p>
+                <h2>Verification Checklist</h2>
+
+                <div id="checklistItems">
+                    No checklist available.
+                </div>
+
+                <br>
+
+                <button type="button" onclick="exportChecklist()">
+                    ↓ Export Checklist
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <div>
+                <strong>◈ DIGITAL DARK SPOT</strong>
+                <p>AI-Assisted Information Gap Detection Platform</p>
+            </div>
+
+            <span>© 2026 | Evidence First. Assumptions Labelled.</span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
